@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=asliddin
+      - MONGO_INITDB_ROOT_PASSWORD=asliddin
