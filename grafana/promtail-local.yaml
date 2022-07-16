@@ -1,0 +1,20 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /Users/asliddin/Projects/docker/grafana/positions.yaml # This location needs to be writeable by Promtail.
+
+client:
+  url: http://localhost:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: system
+    pipeline_stages:
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: american_logistics_app
+          host: localhost
+          __path__: /Users/asliddin/Projects/go/src/github.com/abdivasiyev/american_logistics_api/logs/*.log
