@@ -4,21 +4,21 @@ services:
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_USER=xxxx
-      - POSTGRES_PASSWORD=xxxx
-      - POSTGRES_DB=xxxx
+      - POSTGRES_USER=${xxxx}
+      - POSTGRES_PASSWORD=${xxxx}
+      - POSTGRES_DB=${xxxx}
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - '5432:5432'
+    env_file: postgres.env
     volumes:
       - db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U xxxx -d xxxx"]
+      test: ["CMD-SHELL", "pg_isready -U ${xxxx} -d ${xxxx}"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 10s
-    restart: unless-stopped
 volumes:
   db:
     driver: local
