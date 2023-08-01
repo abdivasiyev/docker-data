@@ -1,6 +1,12 @@
 version: "3.8"
 
 services:
+  nats-local:
+    image: nats:alpine
+    ports:
+      - "4444:4222"
+      - "8888:8222"
+    command: --js
   nats-streaming:
     image: nats-streaming:alpine
     ports:
