@@ -6,6 +6,7 @@ services:
     environment:
       - MEILI_ENV=development
       - MEILI_NO_ANALYTICS=true
+      - MEILI_MASTER_KEY=itismymasterkey
     ports:
       - 7700:7700
     volumes:
