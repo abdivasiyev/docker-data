@@ -1,12 +1,24 @@
-version: "3.8"
-
+version: '3.8'
 services:
-  postgres:
-    image: postgis/postgis:13-master
-    container_name: local_postgres
-    volumes:
-      - ./data:/var/lib/postgresql/data
-    env_file:
-      - postgres.env
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${xxxx}
+      - POSTGRES_PASSWORD=${xxxx}
+      - POSTGRES_DB=${xxxx}
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
+      - '5432:5432'
+    env_file: postgres.env
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${xxxx} -d ${xxxx}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+volumes:
+  db:
+    driver: local
