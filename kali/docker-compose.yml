@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  kali:
+    build: .
+    platform: linux/amd64
+    container_name: kali
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    volumes:
+      - ./data:/root/data      # persistent data directory
+      - ./ssh:/root/.ssh       # mount your SSH keys (optional)
+    working_dir: /root
+    ports:
+      - "2222:22"              # expose SSH on port 2222 of your host
