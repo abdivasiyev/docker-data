@@ -1,11 +1,7 @@
-version: "3.8"
-
 services:
   postgres:
     image: postgis/postgis:13-master
     container_name: local_postgres
-    volumes:
-      - ./data:/var/lib/postgresql/data
     env_file:
       - postgres.env
     ports:
