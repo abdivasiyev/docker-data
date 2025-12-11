@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   minio:
-    image: quay.io/minio/minio:latest
+    image: minio/minio:latest
     volumes:
       - ./data:/data
     ports:

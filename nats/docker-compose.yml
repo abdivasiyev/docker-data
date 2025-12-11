@@ -1,4 +1,8 @@
 services:
+  nats-ui:
+    image: ghcr.io/nats-nui/nui:latest
+    ports:
+      - "31311:31311"
   nats-local:
     image: nats:alpine
     ports:
