@@ -11,6 +11,8 @@ services:
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=qwerty123
+    # Inside container run this:
+    # mc alias set local http://localhost:9000 admin qwerty123
     command: server /data --console-address ":9001"
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
